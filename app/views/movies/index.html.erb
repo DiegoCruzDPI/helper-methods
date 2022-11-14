@@ -5,7 +5,16 @@
 <hr>
 
 <div>
-  <a href="/movies/new">Add a new movie</a>
+
+  <!--<a href="/movies/new">Add a new movie</a>
+  we do not use href="/movies/new" ... we use this the erd tags and call the route with the desired path (reference app/rails/info to check if the names have 
+  made for you)
+
+the new way of writing our code is called helper methods
+
+  VIEW SOURCE SHOULD LOOK LIKE OLD WAY OF RIGHTING PATHS!! (/moives/new)
+  -->
+  <a href="<%= new_movie_path %>">Add a new moive</a>
 </div>
 
 <hr>
