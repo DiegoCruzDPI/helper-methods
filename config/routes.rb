@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   
   # UPDATE
   patch "/movies/:id" => "movies#update" 
-  get "/movies/:id/edit" => "movies#edit", as: :edit_move #edit_movie_path() (expects an argument to populate :id segment)
+  get "/movies/:id/edit" => "movies#edit", as: :edit_movie #edit_movie_path() (expects an argument to populate :id segment)
   
   # DELETE
   delete "/movies/:id" => "movies#destroy" 
