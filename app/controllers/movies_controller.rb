@@ -2,7 +2,14 @@ class MoviesController < ApplicationController
   def new
     @the_movie = Movie.new
 
-    render template: "movies/new.html.erb"
+    #bcause we know that .html.erb is internal, rudy does not need us to explicityly say "movies/new.html.erb"
+
+    #also, if the name of the folder matches the name of the conroller and the action name matches the name of the template, we can delete all of this
+    # you have to be very mindful of this, however, because if you ommit it prematurely it will break
+
+    #the two match so we dont even need to include it in the action at all
+    # render  "movies/new"
+
   end
 
   def index
@@ -16,7 +23,7 @@ class MoviesController < ApplicationController
       end
 
       format.html do
-        render template:  "movies/index.html.erb" 
+    
       end
     end
   end
@@ -27,8 +34,7 @@ class MoviesController < ApplicationController
     matching_movies = Movie.where({ :id => the_id })
 
     @the_movie = matching_movies.first
-
-    render template: "movies/show.html.erb" 
+ 
   end
 
   def create
@@ -41,7 +47,8 @@ class MoviesController < ApplicationController
       #we use the _url versions of our paths in our controllers!!! We want the full _url to render here in the server!!!
       redirect_to(movies_url, { :notice => "Movie created successfully." })
     else
-      render template: "movies/new.html.erb"
+      #we need to have new here still because the action is not the same as the template!!!
+      render  "new"
     end
   end
 
@@ -52,7 +59,6 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_movies.first
 
-    render template: "movies/edit.html.erb" 
   end
 
   def update
