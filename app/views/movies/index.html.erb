@@ -13,8 +13,10 @@
 the new way of writing our code is called helper methods
 
   VIEW SOURCE SHOULD LOOK LIKE OLD WAY OF RIGHTING PATHS!! (/moives/new)
+
+<a href="<%= new_movie_path %>">Add a new moive</a>
   -->
-  <a href="<%= new_movie_path %>">Add a new moive</a>
+  <%= link_to "Add a new movie", new_movie_path %>
 </div>
 
 <hr>
@@ -67,9 +69,14 @@ the new way of writing our code is called helper methods
     </td>
 
     <td>
+    <!--
       <a href="<%= movie_path(a_movie.id) %>">
         Show details
       </a>
+
+      ALL CONVENTIONS MUST BE IN PLACE!! (_paths, link_to ,ect) ALL MUST WORK FOR THIS LINE OF CODE TO WORK! CHECK /rails/info FOR PATHS
+      -->
+      <%= link_to "Show details", a_movie %>
     </td>
   </tr>
   <% end %>

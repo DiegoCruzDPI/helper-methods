@@ -4,26 +4,28 @@
   <p style="color: red;"><%= message %></p>
 <% end %>
 
-<form action="<%= movies_path %>" method="post">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<!--We use erb tags to automate a lot of the form code for us (VIEW SOURCE ALWAYS) We need to close it and follow this format
+  The helper methods makes the HTML for us and gives us values that we can change later
 
-  <div>
-    <label for="title_box">
-      Title
-    </label>
+  look at all the erb tags for different things, look up any special erbs and learn about them
 
-    <input type="text" id="title_box" name="query_title" value="<%= @the_movie.title %>">
+  if you are unsure about how to manipulate the arguments or what changes what, remember that you can VIEW SOURCE and you will find 
+  what you are looking for!!!
+-->
+<%= form_with(url: movies_path) do %>
+
+  <%= label_tag :title, "Title" %>
+
+  <%= text_field_tag :query_title, @the_movie.title, id: "title_box" %>
   </div>
 
   <div>
-    <label for="description_box">
-      Description
-    </label>
+   
+   <%= label_tag :description_box, "Description" %>
 
-    <textarea id="description_box" name="query_description" rows="3"><%= @the_movie.description %></textarea>
+   <%= text_area_tag :query_description, @the_movie.description, id: "description_box", rows: "3" %>
+
   </div>
 
-  <button>
-    Create movie
-  </button>
-</form>
+  <%= button_tag "Create movie" %>
+<% end %>
