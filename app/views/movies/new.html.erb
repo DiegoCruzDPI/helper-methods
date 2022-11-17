@@ -16,16 +16,27 @@
 
   <%= label_tag :title, "Title" %>
 
-  <%= text_field_tag :title, @movie.title, id: "title" %>
+  <%= text_field_tag "movie[title]", @movie.title, id: "title" %>
   </div>
 
   <div>
    
    <%= label_tag :description, "Description" %>
 
-   <%= text_area_tag :description, @movie.description, id: "description", rows: "3" %>
+   <%= text_area_tag "movie[description]", @movie.description, id: "description", rows: "3" %>
 
   </div>
 
   <%= button_tag "Create movie" %>
 <% end %>
+
+<!--
+dooooooood look at this
+We want to create nested hashes for our forms!!!
+
+It should look like this in our Sever Log!!!!
+
+{ :movie => { :title => "Something", :description => "Something"}}
+
+Remember to check the parameters it is very important!!!
+-->
