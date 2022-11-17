@@ -1,28 +1,30 @@
 <h1>Edit movie</h1>
 
-<% @the_movie.errors.full_messages.each do |message| %>
+<% @movie.errors.full_messages.each do |message| %>
   <p style="color: red;"><%= message %></p>
 <% end %>
 
-<!--we can just use @the_movie rather than @the_movie.id becuase ActiveRecord knows that we are looking for
+<!--we can just use @movie rather than @movie.id becuase ActiveRecord knows that we are looking for
 the id instance(FOR ID BY DEFAULT NOTHING ELSE)
 
   if we are using a different method for the form, do method: and whaterver the method is to automatically populate our code wit
   be mindful and look at what you are populating in view source!!
 
+  Craaaaaaaazy... we just need the :tittle or :whatever and we don't really need to add argumnets ("") for text Ruby will auto populate it for us. VIEW SOURCE!!!
+
 -->
 
-<%= form_with(url: movie_path(@the_movie), method: :patch) do %>
+<%= form_with(url: movie_path(@movie), method: :patch) do %>
   <div>
-    <%= label_tag :title, "Title" %>
+    <%= label_tag :title%>
 
-    <%= text_field_tag :query_title, @the_movie.title, id: "title_box" %>
+    <%= text_field_tag :title, @movie.title %>
   </div>
 
   <div>
-   <%= label_tag :description_box, "Description" %>
+   <%= label_tag :description %>
 
-   <%= text_area_tag :query_description, @the_movie.description, id: "description_box", rows: "3" %>
+   <%= text_area_tag :description, @movie.description, rows: "3" %>
   </div>
 
   <%= button_tag "Update movie" %>

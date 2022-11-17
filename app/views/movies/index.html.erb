@@ -47,36 +47,36 @@ the new way of writing our code is called helper methods
     </th>
   </tr>
 
-  <% @list_of_movies.each do |a_movie| %>
+  <% @movies.each do |movie| %>
   <tr>
     <td>
-      <%= a_movie.id %>
+      <%= movie.id %>
     </td>
 
     <td>
-      <%= a_movie.title %>
+      <%= movie.title %>
     </td>
 
     <td>
-      <%= a_movie.description %>
+      <%= movie.description %>
     </td>
 
     <td>
-      <%= time_ago_in_words(a_movie.created_at) %> ago
+      <%= time_ago_in_words(movie.created_at) %> ago
     </td>
     <td>
-      <%= time_ago_in_words(a_movie.updated_at) %> ago
+      <%= time_ago_in_words(movie.updated_at) %> ago
     </td>
 
     <td>
     <!--
-      <a href="<%= movie_path(a_movie.id) %>">
+      <a href="<%= movie_path(movie.id) %>">
         Show details
       </a>
 
       ALL CONVENTIONS MUST BE IN PLACE!! (_paths, link_to ,ect) ALL MUST WORK FOR THIS LINE OF CODE TO WORK! CHECK /rails/info FOR PATHS
       -->
-      <%= link_to "Show details", a_movie %>
+      <%= link_to "Show details", movie %>
     </td>
   </tr>
   <% end %>
