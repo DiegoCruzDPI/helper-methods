@@ -5,29 +5,27 @@
 <% end %>
 
 <!--we can just use @the_movie rather than @the_movie.id becuase ActiveRecord knows that we are looking for
-the id instance(FOR ID BY DEFAULT NOTHING ELSE)-->
-<form action="<%=movie_path(@the_movie) %>" method="post">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  
-  <input name="_method" value="patch" type="hidden">
+the id instance(FOR ID BY DEFAULT NOTHING ELSE)
 
+  if we are using a different method for the form, do method: and whaterver the method is to automatically populate our code wit
+  be mindful and look at what you are populating in view source!!
+
+-->
+
+<%= form_with(url: movie_path(@the_movie), method: :patch) do %>
   <div>
-    <label for="title_box">
-      Title
-    </label>
+    <%= label_tag :title, "Title" %>
 
-    <input type="text" id="title_box" name="query_title" value="<%= @the_movie.title %>">
+    <%= text_field_tag :query_title, @the_movie.title, id: "title_box" %>
   </div>
 
   <div>
-    <label for="description_box">
-      Description
-    </label>
+   <%= label_tag :description_box, "Description" %>
 
-    <textarea id="description_box" name="query_description" rows="3"><%= @the_movie.description %></textarea>
+   <%= text_area_tag :query_description, @the_movie.description, id: "description_box", rows: "3" %>
   </div>
 
-  <button>
-    Update movie
-  </button>
-</form>
+  <%= button_tag "Update movie" %>
+<% end %>
+
+
