@@ -14,20 +14,20 @@ the id instance(FOR ID BY DEFAULT NOTHING ELSE)
 
 -->
 
-<%= form_with(url: movie_path(@movie), method: :patch) do %>
+<%= form_with(model: @movie) do |form| %>
   <div>
-    <%= label_tag :title%>
+    <%= form.label :title%>
 
-    <%= text_field_tag :title, @movie.title %>
+    <%= form.text_field :title %>
   </div>
 
   <div>
-   <%= label_tag :description %>
+   <%= form.label :description %>
 
-   <%= text_area_tag :description, @movie.description, rows: "3" %>
+   <%= form.text_area :description, rows: "3" %>
   </div>
 
-  <%= button_tag "Update movie" %>
+  <%= form.submit %>
 <% end %>
 
 
