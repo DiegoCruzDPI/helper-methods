@@ -11,23 +11,32 @@
 
   if you are unsure about how to manipulate the arguments or what changes what, remember that you can VIEW SOURCE and you will find 
   what you are looking for!!!
+
+  ///we can use model: @something to build a form for the vary object that we want to build the form for. You can't use it everywhere you have to be very midful
+  of where you can use it. In this case we can muliple forms in different templates that follow the same sturcure, so we can use model: instead of url:
+
+  CONVENTIONS MUST BE FOLLOWED THROUGHOUT OR THIS WOULD NOT WORK!!!
+
+  /// model: can have a block variable ,|duh|, attached to it and will make it a lot easier to manipulate our code
+  /// NO MORE SPECIFICALLY CALLING label_tag!!!
+  everything is still incuded!
 -->
-<%= form_with(url: movies_path) do %>
+<%= form_with(model: @movie) do |form| %>
 
-  <%= label_tag :title, "Title" %>
+  <%= form.label :title %>
 
-  <%= text_field_tag "movie[title]", @movie.title, id: "title" %>
+  <%= form.text_field :title%>
   </div>
 
   <div>
    
-   <%= label_tag :description, "Description" %>
+   <%= form.label :description %>
 
-   <%= text_area_tag "movie[description]", @movie.description, id: "description", rows: "3" %>
+   <%= form.text_area :description, rows: 3 %>
 
   </div>
 
-  <%= button_tag "Create movie" %>
+  <%= form.button %>
 <% end %>
 
 <!--

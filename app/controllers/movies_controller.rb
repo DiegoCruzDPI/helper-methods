@@ -34,9 +34,20 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new
-    @movie.title = params.fetch(:movie).fetch(:title)
-    @movie.description = params.fetch(:movie).fetch(:description)
+
+    #boom! MASS ASSIGNMENT!!!! .new can get multple hashes and assign them values for us. So :title and :descrption are automatically taken care of 
+    # for us when we params.fetch(:movie)
+
+    #//for security, we need .require(:movie).permit(title,:title) in order to retrieve user input. 
+    #not doing so will result in a Forbidden attributes erro and frogetting one will give us a Unpermitted parameter: :description error in our terminal
+    movie_attributes = params.require(:movie).permit(:title,:description)
+
+    @movie = Movie.new(movie_attributes)
+
+#Here we were fetching the :movie and :title/:description to get a hash within a hash
+    # @movie = Movie.new
+    # @movie.title = params.fetch(:movie).fetch(:title)
+    # @movie.description = params.fetch(:movie).fetch(:description)
 
     if @movie.valid?
       @movie.save
